@@ -37,17 +37,17 @@ class CameraRollPicker extends Component {
     this.fetch();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.selected === this.state.selected) {
-      // Changing configuration props
-      this.refresh();
-    } else {
-      // Only updating selected
-      this.setState({
-        selected: nextProps.selected,
-      });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.selected === this.state.selected) {
+  //     // Changing configuration props
+  //     this.refresh();
+  //   } else {
+  //     // Only updating selected
+  //     this.setState({
+  //       selected: nextProps.selected,
+  //     });
+  //   }
+  // }
 
   fetch() {
     if (!this.state.loadingMore) {
@@ -154,7 +154,9 @@ class CameraRollPicker extends Component {
     } = this.props;
 
     var uri = item.node.image.uri;
+    console.warn(selected)
     var isSelected = (this._arrayObjectIndexOf(selected, 'uri', uri) >= 0) ? true : false;
+    console.warn(isSelected)
 
     return (
       <ImageItem
@@ -208,7 +210,7 @@ class CameraRollPicker extends Component {
       selected.splice(index, 1);
     } else {
       if (selectSingleItem) {
-        selected.splice(0,selected.length);
+        selected.splice(0, selected.length);
       }
       if (selected.length < maximum) {
         selected.push(image);
