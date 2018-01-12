@@ -154,9 +154,7 @@ class CameraRollPicker extends Component {
     } = this.props;
 
     var uri = item.node.image.uri;
-    console.warn(selected)
-    var isSelected = (this._arrayObjectIndexOf(selected, 'uri', uri) >= 0) ? true : false;
-    console.warn(isSelected)
+    var isSelected = this._arrayObjectIndexOf(selected, 'uri', uri) >= 0;
 
     return (
       <ImageItem
